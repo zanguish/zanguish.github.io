@@ -20,6 +20,7 @@ script:
 
 after_script:
   - cd ./public
+  - echo '# zanguish.github.io [![Build Status](https://travis-ci.org/zanguish/zanguish.github.io.svg?branch=source)](https://travis-ci.org/zanguish/zanguish.github.io)' > README.md
   - git init
   - git config user.name "zanguish"
   - git config user.email "zw13476587420@163.com"
