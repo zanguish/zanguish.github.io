@@ -1,6 +1,8 @@
 ---
 title: git 常用操作
-tag:git
+date: 2018-12-18 22:39:50
+tags:
+  - git
 ---
 
 #### 1. Git回滚代码到某个commit
