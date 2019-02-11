@@ -5,7 +5,7 @@ tags:
   - git
 ---
 
-#### 1. Git回滚代码到某个commit
+#### Git 撤销操作
 ```
 回退命令：
 $ git reset --hard HEAD^         回退到上个版本
@@ -15,10 +15,39 @@ $ git reset --hard commit_id     退到/进到 指定commit的sha码
 强推到远程：
 
 $ git push origin HEAD --force
+
+
+git reset HEAD file 已暂存 撤销
+git checkout -- file。 未暂存 撤销
+
+-----------
+
+已修改,未暂存
+git checkout .
+或者
+git reset --hard 慎用
+
+
+已暂存，未提交 撤销
+
+git reset
+git checkout .
+或者
+git reset --hard 慎用
+
+已提交，未推送 撤销
+git reset --hard origin/master
+
+已推送 撤销
+git reset --hard HEAD^
+git push -f
+
+
+git log --pretty=oneline
 ```
 
 
-#### 2.Git 远程仓库 
+#### Git 远程仓库 
 
 ```
 1.查看现有远程仓库的地址url
@@ -45,7 +74,7 @@ git remote set-url --add origin <url3>
 
 ```
 
-#### git配置相关
+#### Git 配置相关
 
 ```
 查看系统
@@ -69,9 +98,39 @@ git config --global user.email  "test@gmail.com"
 ```
 
 
-#### gitignore不起作用解决办法
+#### Git gitignore不起作用解决办法
+
 ```
 git rm -r --cached .
 git add .
 git commit -m 'update .gitignore'
+```
+
+
+#### Git stash
+
+```
+如果希望保留本地的改动,仅仅并入新配置项, 处理方法如下:
+git stash
+git pull
+git stash pop
+
+如果希望用代码库中的文件完全覆盖本地工作版本. 方法如下:
+git reset --hard
+git pull
+
+
+
+stash 用法
+git stash save "message..." 保存当前进度
+git stash list 暂存区列表
+git stash drop  [<stash>] 删除进度,默认最新的进度
+git stash clear 删除所有存储的进度。
+git stash apply [--index] [<stash>] 不删除进度,恢复进度
+git stash pop [--index] [<stash>] 恢复进度,删除进度
+git stash branch <branchname> <stash> 基于进度创建分支
+git stash show [<stash>] 展示进度
+
+[--index] 参数：不仅恢复工作区，还恢复暂存区
+[<stash>] 进度编号
 ```
